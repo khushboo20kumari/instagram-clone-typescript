@@ -1,146 +1,42 @@
-// import { useState } from "react"
-// interface Person {
-//     email:string,
-//     password:string
-// }
-// const Signup: React.FC = () => {
-//     const [email, setEmail] = useState<string>("")
-//     const [password, setPassword] = useState<string>("")
-//     const [item, setItem] = useState<any[]>([])
-
-//     const OnChangeEventEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-//         setEmail(event.target.value)
-//     }
-
-//     const OnChangeEventPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-//         setPassword(event.target.value)
-//     }
-//     const OnClickEvent = () => {
-//         const data:Person={email:email,password:password}
-//         setEmail("")
-//         setPassword("")
-//         setItem(data)
-//     }
-//     return (
-
-//         <>
-//             <p>Signup page</p>
-//             <input className="" onChange={OnChangeEventEmail} value={email}></input>
-//             <input className="" onChange={OnChangeEventPassword}></input>
-//             <button onClick={OnClickEvent}>Save</button>
-//         </>
-//     )
-// }
-// export default Signup;
 
 
-// import React, { useState } from "react";
-// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
-// // import { app } from "./ComData";
-// import { app } from "./Data"
-// const auth = getAuth(app)
-
-// interface Person {
-//     email: string;
-//     password: string;
-// }
-
-
-
-// const Signup: React.FC = () => {
-//     const [email, setEmail] = useState<string>("");
-//     const [password, setPassword] = useState<string>("");
-//     const [item, setItem] = useState<Person | null>(null);
-
-//     const OnChangeEventEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-//         setEmail(event.target.value);
-//     };
-
-//     const OnChangeEventPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-//         setPassword(event.target.value);
-//     };
-
-//     const OnClickEvent = () => {
-//         const data: Person = { email: email, password: password };
-//         setEmail("");
-//         setPassword("");
-//         createUserWithEmailAndPassword(
-//             auth,
-//             setItem(data);
-//         ).then((value) => console.log(value))
-//     };
-   
-
-//     return (
-//         <>
-//             <p>Signup page</p>
-//             <input className="" onChange={OnChangeEventEmail} value={email} placeholder="Email"></input>
-//             <input className="" onChange={OnChangeEventPassword} value={password} placeholder="Password"></input>
-//             <button onClick={OnClickEvent}>Save</button>
-//         </>
-//     );
-// };
-
-// export default Signup;
-
-
-// import React, { useState } from "react";
-// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-// import { app } from "./Data";
-
-// const auth = getAuth(app);
-
-// interface Person {
-//     email: string;
-//     password: string;
-// }
-
-// const Signup: React.FC = () => {
-//     const [email, setEmail] = useState<string>("");
-//     const [password, setPassword] = useState<string>("");
-
-//     const OnChangeEventEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-//         setEmail(event.target.value);
-//     };
-
-//     const OnChangeEventPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-//         setPassword(event.target.value);
-//     };
-
-//     const OnClickEvent = () => {
-//         // const data: Person = { email: email, password: password };
-//         setEmail("");
-//         setPassword("");
-//         createUserWithEmailAndPassword(
-//             auth,
-//             email,
-//             password
-//         ).then((userCredential) => {
-//             // You can do something with the user data here if needed
-//             console.log(userCredential);
-//         }).catch((error) => {
-//             // Handle errors here
-//             console.error("Error signing up: ", error);
-//         });
-//     };
-
-//     return (
-//         <>
-//             <p>Signup page</p>
-//             <input className="" onChange={OnChangeEventEmail} value={email} placeholder="Email"></input>
-//             <input className="" onChange={OnChangeEventPassword} value={password} placeholder="Password"></input>
-//             <button onClick={OnClickEvent}>Save</button>
-//         </>
-//     );
-// };
-
-// export default Signup;
-
-
-const Signup:React.FC=()=>{
-    return(
-        <>
-        </>
-    )
+import React from 'react';
+import { Grid, Paper, Avatar, Typography, TextField, Button, FormControl, FormControlLabel, FormLabel, Checkbox, Radio, RadioGroup } from '@material-ui/core';
+interface SignupProps {
+    setEmail:React.Dispatch<React.SetStateAction <string>>,
+    email:string,
+    password:string,
+    setPassord:React.Dispatch<React.SetStateAction<string>>,
+    handleSignup:()=>void;
 }
+const Signup: React.FC <SignupProps> = ({email,setEmail,setPassord,handleSignup}) => {
+    const paperStyle = { padding: '30px 20px', width: 300, margin: "20px auto" };
+    const headerStyle = { margin: 0 };
+    const avatarStyle = { backgroundColor: '#1bbd7e' };
+    const marginTop = { marginTop: 5 };
+    return (
+        <Grid container justify="center">
+            <Paper elevation={20} style={paperStyle}>
+                <Grid>
+                    <center>
+                        <Avatar style={avatarStyle}>
+                        </Avatar>
+                        <Typography variant='h5' style={headerStyle}>Sign Up</Typography>
+                        <Typography variant='caption' gutterBottom>Please fill this form to create an account!</Typography>
+                    </center>
+                </Grid>
+                <form>
+                    <TextField fullWidth label='Name' placeholder="Enter your name" />
+                    <TextField fullWidth  label='Email' placeholder="Enter your email" />
+                    <TextField fullWidth label='Phone Number' placeholder="Enter your phone number" />
+                    <TextField fullWidth label='Password' type="password" placeholder="Enter your password" />
+                    <TextField fullWidth label='Confirm Password' placeholder="Confirm your password" />
+                    <Typography>Do you have account</Typography>
+                    <Button type='submit' variant='contained' color='primary'>Sign up</Button>
+                </form>
+            </Paper>
+        </Grid>
+    );
+}
+
 export default Signup;
